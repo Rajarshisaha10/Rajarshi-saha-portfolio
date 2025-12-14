@@ -8,129 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            /* Note: Smooth scroll disabled to keep JS animation synced perfectly with scroll bar */
-        }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(135deg, #0f050a 0%, #1a0a14 100%);
-            color: #fff;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #ec4899, #f472b6, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .glass-card {
-            background: rgba(20, 10, 15, 0.5);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(236, 72, 153, 0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(236, 72, 153, 0.5);
-        }
-
-        .skill-tag {
-            padding: 6px 14px;
-            background: rgba(236, 72, 153, 0.1);
-            border: 1px solid rgba(236, 72, 153, 0.3);
-            border-radius: 999px;
-            font-size: 0.8rem;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- ANIMATION STYLES --- */
-
-        /* The moving container (Fixed on top of everything) */
-        #traveler {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0; /* Set via JS */
-            height: 0; /* Set via JS */
-            z-index: 50; /* Above Navbar */
-            perspective: 1000px;
-            pointer-events: none; /* Allows clicking things behind it */
-            will-change: transform, width, height;
-        }
-
-        /* The Flipper Card Container */
-        .flipper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.1s linear; /* JS Controlled */
-            transform-style: preserve-3d;
-        }
-
-        /* Front and Back Faces */
-        .flip-front, .flip-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.2);
-            border: 2px solid #ec4899;
-        }
-
-        .flip-front {
-            background: #000;
-            border-radius: 50%; /* Circle */
-        }
-
-        .flip-back {
-            background: #000;
-            transform: rotateY(180deg);
-            border-radius: 1rem; /* Rounded Rectangle */
-        }
-
-        /* Anchors (Invisible markers for layout calculation) */
-        .anchor-box {
-            /* border: 1px dashed red; Enable for debugging positions */
-            opacity: 0; 
-            pointer-events: none;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 5, 8, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { transform: scale(0.95); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-
-    </style>
 </head>
 
 <body class="text-white">
@@ -193,9 +70,32 @@
             <div class="grid lg:grid-cols-2 gap-16 items-start">
                 
                 <div class="space-y-6 text-gray-400 text-lg leading-relaxed reveal">
-                    <p>I am a <span class="text-white font-semibold">passionate CSE fresher</span> with a strong foundation in programming and web development. I enjoy building modern, responsive applications and exploring AI-powered solutions.</p>
-                    <p>Alongside coding, I have a deep interest in <span class="text-pink-400 font-semibold">cinematic visual content</span>. I am continuously learning technologies like Django, Node.js, and AI/ML.</p>
-                </div>
+                    <p>
+  I am a <span class="text-white font-semibold">passionate CSE fresher</span> with a solid foundation in 
+  <span class="text-indigo-400 font-semibold">data structures, algorithms, and full-stack web development</span>. 
+  I enjoy building modern, scalable, and responsive applications using clean code, thoughtful UI/UX, and best development practices.
+</p>
+
+<p>
+  I have hands-on experience with technologies like 
+  <span class="text-indigo-400 font-semibold">HTML, CSS, JavaScript, Tailwind CSS, Python, Django, Node.js</span>, 
+  and I actively experiment with APIs, databases, and real-time systems. 
+  I am especially curious about how <span class="text-pink-400 font-semibold">AI and machine learning</span> 
+  can be integrated into real-world products to solve meaningful problems.
+</p>
+
+<p>
+  Beyond coding, I have a strong passion for 
+  <span class="text-pink-400 font-semibold">cinematic visual content, storytelling, and motion-driven design</span>. 
+  This creative interest helps me craft visually engaging interfaces, animations, and interactive experiences that go beyond just functionality.
+</p>
+
+<p>
+  I am a continuous learner who enjoys hackathons, building personal projects, and exploring emerging technologies. 
+  My goal is to grow as a <span class="text-indigo-400 font-semibold">creative developer</span> who blends 
+  engineering, design, and intelligence to build impactful digital experiences.
+</p>
+
 
                 <div class="relative min-h-[400px]">
                      <div id="about-anchor" class="anchor-box w-full h-[400px] rounded-2xl"></div>
