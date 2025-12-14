@@ -1,12 +1,13 @@
-        * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Note: Smooth scroll disabled to keep JS animation synced perfectly with scroll bar */
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Space Grotesk', sans-serif;
+            /* Subtle pinkish-black gradient background */
             background: linear-gradient(135deg, #0f050a 0%, #1a0a14 100%);
             color: #fff;
             overflow-x: hidden;
@@ -20,6 +21,13 @@
             background-clip: text;
         }
 
+        /* Profile Circle (Hero) */
+        .profile-circle {
+            border: 4px solid #ec4899;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.1);
+        }
+
+        /* Glass Card Effect */
         .glass-card {
             background: rgba(20, 10, 15, 0.5);
             backdrop-filter: blur(12px);
@@ -40,71 +48,42 @@
             font-size: 0.8rem;
         }
 
+        /* Standard Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* --- ANIMATION STYLES --- */
-
-        /* The moving container (Fixed on top of everything) */
-        #traveler {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0; /* Set via JS */
-            height: 0; /* Set via JS */
-            z-index: 50; /* Above Navbar */
-            perspective: 1000px;
-            pointer-events: none; /* Allows clicking things behind it */
-            will-change: transform, width, height;
+        /* NEW: "Turn in the way" Animation for About Image */
+        .reveal-rotate {
+            opacity: 0;
+            transform: translateY(-50px) rotateY(45deg) rotateX(10deg);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-origin: center center;
         }
 
-        /* The Flipper Card Container */
-        .flipper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.1s linear; /* JS Controlled */
-            transform-style: preserve-3d;
+        .reveal-rotate.active {
+            opacity: 1;
+            transform: translateY(0) rotateY(0) rotateX(0);
         }
 
-        /* Front and Back Faces */
-        .flip-front, .flip-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.2);
-            border: 2px solid #ec4899;
+        /* Hero Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
         }
 
-        .flip-front {
-            background: #000;
-            border-radius: 50%; /* Circle */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
-        .flip-back {
-            background: #000;
-            transform: rotateY(180deg);
-            border-radius: 1rem; /* Rounded Rectangle */
-        }
-
-        /* Anchors (Invisible markers for layout calculation) */
-        .anchor-box {
-            /* border: 1px dashed red; Enable for debugging positions */
-            opacity: 0; 
-            pointer-events: none;
-        }
-
-        /* Modal */
+        /* Modal Styles */
         .modal-overlay {
             position: fixed;
             inset: 0;
