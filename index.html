@@ -11,44 +11,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        body { background: #0f050a; font-family: 'Space Grotesk', sans-serif; }
+        body {
+            background: #0f050a;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
         .gradient-text {
             background: linear-gradient(90deg, #ec4899, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .glass-card {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(236,72,153,0.15);
+            border: 1px solid rgba(236, 72, 153, 0.2);
         }
+
         .skill-tag {
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 999px;
-            background: rgba(236,72,153,0.15);
+            background: rgba(236, 72, 153, 0.15);
             font-size: 12px;
             font-weight: 600;
         }
+
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.85);
             display: none;
             z-index: 50;
         }
-        .modal-overlay.active { display: flex; }
+
+        .modal-overlay.active {
+            display: flex;
+        }
     </style>
 </head>
 
 <body class="text-white">
 
-<!-- NAV -->
-<nav class="fixed w-full top-0 z-40 bg-[#0f050a]/80 backdrop-blur-md border-b border-pink-500/10 py-4">
-    <div class="container mx-auto px-8 flex justify-between items-center">
-        <div class="text-2xl font-bold font-[Syne]">
+<!-- NAVBAR -->
+<nav class="fixed w-full top-0 z-50 py-4 bg-[#0f050a]/80 backdrop-blur-md border-b border-pink-500/10">
+    <div class="container mx-auto px-6 md:px-8 flex justify-between items-center">
+        <div class="text-2xl font-bold font-[Syne] cursor-pointer">
             <span class="gradient-text">R</span>AJARSHI
         </div>
-        <div class="hidden md:flex gap-8 text-sm font-semibold">
+        <div class="hidden md:flex gap-8">
+            <a href="#home" class="hover:text-pink-400">HOME</a>
+            <a href="#about" class="hover:text-pink-400">ABOUT</a>
             <a href="#projects" class="hover:text-pink-400">PROJECTS</a>
             <a href="#skills" class="hover:text-pink-400">SKILLS</a>
             <a href="#contact" class="hover:text-pink-400">CONTACT</a>
@@ -57,17 +69,30 @@
 </nav>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center justify-center pt-24">
+<section id="home" class="min-h-screen flex items-center justify-center pt-24">
     <div class="text-center max-w-2xl px-6">
         <h1 class="text-5xl md:text-6xl font-bold font-[Syne] mb-6">
             Hi, I'm <span class="gradient-text">Rajarshi</span>
         </h1>
         <p class="text-gray-400 text-lg mb-8">
-            Machine Learning & Full-Stack Developer building data-driven, scalable systems.
+            Machine Learning & Full-Stack Developer building data-driven systems.
         </p>
-        <a href="#projects" class="px-8 py-4 bg-pink-600 rounded-full font-bold hover:shadow-lg hover:shadow-pink-500/40">
+        <a href="#projects"
+           class="px-8 py-4 bg-pink-600 rounded-full font-bold hover:shadow-lg hover:shadow-pink-500/40">
             View My Work
         </a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24">
+    <div class="container mx-auto px-8 max-w-4xl text-center">
+        <h2 class="text-5xl font-bold font-[Syne] mb-6">About Me</h2>
+        <p class="text-gray-400 text-lg leading-relaxed">
+            I am a Computer Science fresher with strong interest in Machine Learning and
+            Full-Stack Development. I enjoy building scalable ML pipelines, performing
+            data analysis, and integrating models into real-world systems.
+        </p>
     </div>
 </section>
 
@@ -76,21 +101,23 @@
     <div class="container mx-auto px-8">
         <div class="text-center mb-16">
             <h2 class="text-5xl font-bold font-[Syne] mb-4">Projects</h2>
-            <p class="text-pink-400 uppercase tracking-widest text-xs">Machine Learning Systems</p>
+            <p class="text-pink-400 uppercase tracking-widest text-xs">
+                Machine Learning Implementations
+            </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Bike Demand -->
+            <!-- Seoul Bike -->
             <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
                  onclick="openModal('bike')">
-                <div class="h-52 bg-black flex items-center justify-center">
+                <div class="h-52 flex items-center justify-center bg-black">
                     <i class="fas fa-bicycle text-6xl text-pink-400"></i>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">Seoul Bike Demand Prediction</h3>
                     <p class="text-gray-400 text-sm">
-                        End-to-end ML pipeline predicting bike rentals using regression & ensemble models.
+                        End-to-end ML pipeline using Linear Regression & Random Forest.
                     </p>
                 </div>
             </div>
@@ -98,13 +125,13 @@
             <!-- Housing -->
             <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
                  onclick="openModal('housing')">
-                <div class="h-52 bg-black flex items-center justify-center">
+                <div class="h-52 flex items-center justify-center bg-black">
                     <i class="fas fa-home text-6xl text-pink-400"></i>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">Housing Price Prediction</h3>
                     <p class="text-gray-400 text-sm">
-                        Regression-based house price estimation with feature scaling & evaluation.
+                        Regression-based house price estimation with evaluation metrics.
                     </p>
                 </div>
             </div>
@@ -112,13 +139,13 @@
             <!-- Ridge -->
             <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
                  onclick="openModal('ridge')">
-                <div class="h-52 bg-black flex items-center justify-center">
+                <div class="h-52 flex items-center justify-center bg-black">
                     <i class="fas fa-chart-line text-6xl text-pink-400"></i>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">Ridge Regression Model</h3>
                     <p class="text-gray-400 text-sm">
-                        Regularized linear regression to reduce overfitting and multicollinearity.
+                        L2-regularized linear regression to reduce overfitting.
                     </p>
                 </div>
             </div>
@@ -137,30 +164,35 @@
             <span class="skill-tag">NumPy</span>
             <span class="skill-tag">Scikit-learn</span>
             <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Random Forest</span>
             <span class="skill-tag">Data Analysis</span>
             <span class="skill-tag">Django</span>
-            <span class="skill-tag">Tailwind CSS</span>
         </div>
     </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-24 text-center">
-    <h2 class="text-5xl font-bold font-[Syne] mb-8">Let's Connect</h2>
-    <p class="text-gray-400 mb-6">rajarshisaha123.4@gmail.com</p>
+    <h2 class="text-5xl font-bold font-[Syne] mb-8">Contact</h2>
+    <p class="text-gray-400">📧 rajarshisaha123.4@gmail.com</p>
 </section>
 
+<!-- FOOTER -->
+<footer class="py-6 border-t border-pink-500/10 text-center text-gray-500 text-sm">
+    © 2025 Rajarshi Saha
+</footer>
+
 <!-- MODALS -->
-<div id="modal-bike" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'bike')">
+<div id="modal-bike" class="modal-overlay items-center justify-center p-6" onclick="closeOutside(event,'bike')">
     <div class="glass-card max-w-3xl p-8 rounded-2xl">
         <h2 class="text-3xl font-bold mb-4">Seoul Bike Demand Prediction</h2>
-        <p class="text-gray-300 mb-6">
-            Built a complete ML pipeline using preprocessing, feature engineering, and multiple models.
-            Compared Linear Regression with Random Forest using RMSE and R² metrics.
+        <p class="text-gray-300 mb-4">
+            Built a complete preprocessing and modeling pipeline using ColumnTransformer,
+            Linear Regression and Random Forest Regressor. Evaluated performance using
+            RMSE and R² score.
         </p>
         <div class="flex flex-wrap gap-2">
             <span class="skill-tag">Pipeline</span>
-            <span class="skill-tag">ColumnTransformer</span>
             <span class="skill-tag">Random Forest</span>
             <span class="skill-tag">RMSE</span>
             <span class="skill-tag">R²</span>
@@ -168,33 +200,33 @@
     </div>
 </div>
 
-<div id="modal-housing" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'housing')">
+<div id="modal-housing" class="modal-overlay items-center justify-center p-6" onclick="closeOutside(event,'housing')">
     <div class="glass-card max-w-3xl p-8 rounded-2xl">
         <h2 class="text-3xl font-bold mb-4">Housing Price Prediction</h2>
         <p class="text-gray-300">
-            Regression-based ML model focusing on preprocessing, scaling, and performance evaluation
-            using real-world housing data.
+            Regression model trained on housing data with feature scaling,
+            preprocessing, and performance evaluation using standard metrics.
         </p>
     </div>
 </div>
 
-<div id="modal-ridge" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'ridge')">
+<div id="modal-ridge" class="modal-overlay items-center justify-center p-6" onclick="closeOutside(event,'ridge')">
     <div class="glass-card max-w-3xl p-8 rounded-2xl">
         <h2 class="text-3xl font-bold mb-4">Ridge Regression</h2>
         <p class="text-gray-300">
-            Implemented L2 regularization to reduce overfitting and improve generalization
-            compared to standard linear regression.
+            Implemented L2 regularization to reduce multicollinearity and overfitting,
+            improving model generalization compared to standard linear regression.
         </p>
     </div>
 </div>
 
 <script>
-function openModal(id){
-    document.getElementById('modal-'+id).classList.add('active');
+function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('active');
 }
-function closeIfOutside(e,id){
-    if(e.target.id === 'modal-'+id){
-        document.getElementById('modal-'+id).classList.remove('active');
+function closeOutside(e, id) {
+    if (e.target.id === 'modal-' + id) {
+        document.getElementById('modal-' + id).classList.remove('active');
     }
 }
 </script>
