@@ -4,431 +4,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rajarshi Saha | Creative Developer</title>
+    <title>Rajarshi Saha | Machine Learning Developer</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body { background: #0f050a; font-family: 'Space Grotesk', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(90deg, #ec4899, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(236,72,153,0.15);
+        }
+        .skill-tag {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(236,72,153,0.15);
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            z-index: 50;
+        }
+        .modal-overlay.active { display: flex; }
+    </style>
 </head>
 
 <body class="text-white">
 
-    <nav class="fixed w-full top-0 z-50 py-4 bg-[#0f050a]/80 backdrop-blur-md border-b border-pink-500/10">
-        <div class="container mx-auto px-6 md:px-8 flex justify-between items-center">
-            <div class="text-2xl font-bold font-[Syne] cursor-pointer" onclick="window.scrollTo(0,0)">
-                <span class="gradient-text">R</span>AJARSHI
-            </div>
-            <div class="hidden md:flex gap-8">
-                <a href="#home" class="text-sm font-medium hover:text-pink-400 transition-colors">HOME</a>
-                <a href="#about" class="text-sm font-medium hover:text-pink-400 transition-colors">ABOUT</a>
-                <a href="#projects" class="text-sm font-medium hover:text-pink-400 transition-colors">PROJECTS</a>
-                <a href="#skills" class="text-sm font-medium hover:text-pink-400 transition-colors">SKILLS</a>
-                <a href="#contact" class="text-sm font-medium hover:text-pink-400 transition-colors">CONTACT</a>
-            </div>
-            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white hover:text-pink-500"><i class="fas fa-bars"></i></button>
+<!-- NAV -->
+<nav class="fixed w-full top-0 z-40 bg-[#0f050a]/80 backdrop-blur-md border-b border-pink-500/10 py-4">
+    <div class="container mx-auto px-8 flex justify-between items-center">
+        <div class="text-2xl font-bold font-[Syne]">
+            <span class="gradient-text">R</span>AJARSHI
         </div>
-    </nav>
-
-    <div id="mobile-menu" class="fixed inset-0 bg-[#0f050a] z-40 hidden flex-col items-center justify-center gap-8">
-        <a href="#home" class="mobile-link text-3xl font-bold hover:text-pink-400">HOME</a>
-        <a href="#about" class="mobile-link text-3xl font-bold hover:text-pink-400">ABOUT</a>
-        <a href="#projects" class="mobile-link text-3xl font-bold hover:text-pink-400">PROJECTS</a>
-        <a href="#contact" class="mobile-link text-3xl font-bold hover:text-pink-400">CONTACT</a>
-        <button id="close-menu-btn" class="absolute top-8 right-8 text-4xl">&times;</button>
-    </div>
-
-    <section id="home" class="min-h-screen flex items-center justify-center relative pt-20">
-        <div class="container mx-auto px-8 grid lg:grid-cols-2 gap-12 items-center">
-            <div class="flex justify-center lg:justify-end order-2 lg:order-1">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 floating">
-                    <div class="profile-circle w-full h-full rounded-full overflow-hidden">
-                        <img src="images/logo.jpg" alt="Rajarshi Saha" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-            <div class="order-1 lg:order-2 text-center lg:text-left">
-                <div class="text-pink-400 text-xs font-semibold tracking-widest mb-3 reveal">CREATIVE DEVELOPER</div>
-                <h1 class="text-4xl md:text-6xl mb-4 font-[Syne] font-bold reveal" style="line-height: 1.1;">
-                    HI, I'M <span class="gradient-text">RAJARSHI</span>
-                </h1>
-                <p class="text-gray-400 text-base md:text-lg mb-6 max-w-lg mx-auto lg:mx-0 reveal">
-                    Crafting clean, interactive, and logic-driven digital experiences.
-                </p>
-                <div class="flex gap-4 justify-center lg:justify-start reveal">
-                    <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-pink-500/50 transition-all">View Projects</a>
-                    <a href="#contact" class="px-6 py-3 border border-pink-500 rounded-full font-semibold text-sm hover:bg-pink-500/10 transition-all">Contact Me</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-24 relative overflow-hidden">
-        <div class="container mx-auto px-8">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold font-[Syne] mb-4">About Me</h2>
-                <p class="text-pink-400 text-xs uppercase tracking-widest">Get to know me</p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-6 text-gray-400 text-lg leading-relaxed reveal order-2 lg:order-1">
-                   
-                   <p>
-  I am a <span class="text-white font-semibold">Computer Science fresher</span> with a strong interest in 
-  <span class="text-indigo-400 font-semibold">Machine Learning and Full-Stack Development</span>. 
-  I enjoy building scalable, responsive, and user-focused applications using clean code, thoughtful UI/UX, 
-  and modern development practices.
-</p>
-
-<p>
-  I have hands-on experience with 
-  <span class="text-indigo-400 font-semibold">
-    HTML, CSS, JavaScript, Tailwind CSS, Python, Django, and Scikit-learn
-  </span>, 
-  and I actively work with APIs, databases, and end-to-end application workflows. 
-  I am particularly interested in integrating 
-  <span class="text-pink-400 font-semibold">machine learning models</span> 
-  into full-stack applications to solve real-world problems.
-</p>
-
-<p>
-  Alongside engineering, I have a strong passion for 
-  <span class="text-pink-400 font-semibold">
-    cinematic visuals, storytelling, and motion-driven design
-  </span>. 
-  This creative mindset helps me build visually engaging interfaces, smooth animations, 
-  and interactive user experiences that go beyond basic functionality.
-</p>
-
-<p>
-  I am a continuous learner who enjoys hackathons, building personal projects, 
-  and exploring emerging technologies. My goal is to grow as a 
-  <span class="text-indigo-400 font-semibold">Machine Learning-driven Full-Stack Developer</span> 
-  who blends engineering, creativity, and intelligence to build impactful digital products.
-</p>
-
-                </div>
-
-                <div class="relative order-1 lg:order-2 reveal-rotate perspective-1000">
-                    <div class="relative rounded-2xl overflow-hidden border border-pink-500/30 shadow-2xl shadow-pink-500/10 group">
-                        <img src="images/background.jpg" onerror="this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1955&auto=format&fit=crop'" alt="About Rajarshi" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    </div>
-                    <div class="absolute -z-10 -bottom-4 -right-4 w-full h-full border-2 border-pink-500/20 rounded-2xl"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-24 relative">
-        <div class="container mx-auto px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold font-[Syne] mb-4">Featured Work</h2>
-                <p class="text-pink-400 text-xs uppercase tracking-widest">Click to view details</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass-card rounded-2xl overflow-hidden group reveal cursor-pointer" onclick="openModal('ai-therapist')">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="images/ai-therapist.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#0f050a]/60 group-hover:bg-[#0f050a]/40 transition-colors flex items-center justify-center">
-                            <i class="fas fa-brain text-5xl text-white/80"></i>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">AI Therapist</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">AI-powered mental health support chatbot.</p>
-                        <button class="text-pink-400 text-sm font-semibold hover:text-white transition-colors">View Details &rarr;</button>
-                    </div>
-                </div>
-
-                <div class="glass-card rounded-2xl overflow-hidden group reveal cursor-pointer" onclick="openModal('railway')">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="images/railway.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#0f050a]/60 group-hover:bg-[#0f050a]/40 transition-colors flex items-center justify-center">
-                            <i class="fas fa-train text-5xl text-white/80"></i>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Railway System</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Django-based railway scheduling system.</p>
-                        <button class="text-pink-400 text-sm font-semibold hover:text-white transition-colors">View Details &rarr;</button>
-                    </div>
-                </div>
-
-                <div class="glass-card rounded-2xl overflow-hidden group reveal cursor-pointer" onclick="openModal('recipe')">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="images/recipe.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#0f050a]/60 group-hover:bg-[#0f050a]/40 transition-colors flex items-center justify-center">
-                            <i class="fas fa-utensils text-5xl text-white/80"></i>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">AI Recipe Maker</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Recipe recommendation app utilizing NLP.</p>
-                        <button class="text-pink-400 text-sm font-semibold hover:text-white transition-colors">View Details &rarr;</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-24 bg-pink-900/5">
-        <div class="container mx-auto px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold font-[Syne] mb-4">Skills & Tech</h2>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="glass-card rounded-xl p-6 reveal">
-                    <h3 class="text-xl font-bold mb-4 text-pink-400">Frontend</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Tailwind</span><span class="skill-tag">Three.js</span>
-                    </div>
-                </div>
-                <div class="glass-card rounded-xl p-6 reveal">
-                    <h3 class="text-xl font-bold mb-4 text-pink-400">Backend</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">Python</span><span class="skill-tag">Flask</span><span class="skill-tag">Django</span><span class="skill-tag">Node.js</span><span class="skill-tag">C/C++</span>
-                    </div>
-                </div>
-                <div class="glass-card rounded-xl p-6 reveal">
-                    <h3 class="text-xl font-bold mb-4 text-pink-400">AI & ML</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">Scikit-learn</span><span class="skill-tag">NLTK</span><span class="skill-tag">spaCy</span><span class="skill-tag">NLP</span>
-                    </div>
-                </div>
-                <div class="glass-card rounded-xl p-6 reveal">
-                    <h3 class="text-xl font-bold mb-4 text-pink-400">Database</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">SQLite</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MySQL</span>
-                    </div>
-                </div>
-                <div class="glass-card rounded-xl p-6 reveal">
-                    <h3 class="text-xl font-bold mb-4 text-pink-400">Creative</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag">Premiere Pro</span><span class="skill-tag">After Effects</span><span class="skill-tag">DaVinci</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 relative">
-        <div class="container mx-auto px-8">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold font-[Syne] mb-4">Let's Connect</h2>
-            </div>
-            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="grid gap-4 reveal">
-                    <a href="https://www.instagram.com/rajarshi_saha_10/" target="_blank" class="glass-card p-6 rounded-xl flex items-center gap-4 hover:bg-pink-500/20 transition-all group">
-                        <div class="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center text-pink-400 group-hover:bg-pink-500 group-hover:text-white transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Instagram</h4>
-                            <p class="text-sm text-gray-400">@rajarshi_saha_10</p>
-                        </div>
-                    </a>
-                    <a href="mailto:rajarshisaha123.4@gmail.com" class="glass-card p-6 rounded-xl flex items-center gap-4 hover:bg-pink-500/20 transition-all group">
-                        <div class="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center text-pink-400 group-hover:bg-pink-500 group-hover:text-white transition-colors">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Email</h4>
-                            <p class="text-sm text-gray-400">rajarshisaha123.4@gmail.com</p>
-                        </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/rajarshi-saha-6a923230b/" target="_blank" class="glass-card p-6 rounded-xl flex items-center gap-4 hover:bg-pink-500/20 transition-all group">
-                        <div class="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center text-pink-400 group-hover:bg-pink-500 group-hover:text-white transition-colors">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">LinkedIn</h4>
-                            <p class="text-sm text-gray-400">Connect professionally</p>
-                        </div>
-                    </a>
-                </div>
-
-                <form class="glass-card p-8 rounded-xl space-y-4 reveal" onsubmit="event.preventDefault(); alert('Message sent!');">
-                    <h3 class="text-2xl font-bold mb-2">Send a Message</h3>
-                    <input type="text" placeholder="Your Name" class="w-full bg-black/30 border border-pink-500/20 rounded-lg px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors">
-                    <input type="email" placeholder="Your Email" class="w-full bg-black/30 border border-pink-500/20 rounded-lg px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors">
-                    <textarea rows="4" placeholder="Your Message" class="w-full bg-black/30 border border-pink-500/20 rounded-lg px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors"></textarea>
-                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg font-bold hover:shadow-lg hover:shadow-pink-500/50 transition-all">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-8 border-t border-pink-500/10 mt-20 text-center text-gray-500 text-sm">
-        <p>&copy; 2025 Rajarshi Saha. All rights reserved.</p>
-    </footer>
-
-    <div id="modal-ai-therapist" class="modal-overlay justify-center items-center p-4" onclick="if(event.target === this) closeModal('ai-therapist')">
-        <div class="modal-content glass-card w-full max-w-4xl rounded-2xl p-0 overflow-hidden bg-[#1a0a14]">
-            <div class="relative h-64">
-                <img src="images/ai-therapist.png" class="w-full h-full object-cover">
-                <button onclick="closeModal('ai-therapist')" class="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full text-white text-2xl flex items-center justify-center hover:bg-pink-500 transition-colors">&times;</button>
-                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-[#1a0a14] to-transparent">
-                    <h2 class="text-3xl font-bold">AI Therapist</h2>
-                    <p class="text-pink-400 font-medium">NLP & Sentiment Analysis</p>
-                </div>
-            </div>
-            <div class="p-8 space-y-6">
-                <p class="text-gray-300 leading-relaxed">
-                    An advanced AI-powered mental health support chatbot that provides empathetic, context-aware conversations using state-of-the-art Natural Language Processing techniques. The system is designed with user safety and ethical AI usage at its core.
-                </p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-pink-400">Key Features</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li>• Context-aware conversational flow</li>
-                            <li>• Real-time sentiment analysis</li>
-                            <li>• Built-in safety mechanisms</li>
-                            <li>• Privacy-focused architecture</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-pink-400">Tech Stack</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Python</span><span class="skill-tag">Flask</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Scikit-learn</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-6 border-t border-pink-500/20 flex gap-4">
-                    <a href="https://github.com/Rajarshisaha10" target="_blank" class="px-6 py-3 bg-pink-600 rounded-lg font-bold hover:bg-pink-700 transition-colors">View Code</a>
-                </div>
-            </div>
+        <div class="hidden md:flex gap-8 text-sm font-semibold">
+            <a href="#projects" class="hover:text-pink-400">PROJECTS</a>
+            <a href="#skills" class="hover:text-pink-400">SKILLS</a>
+            <a href="#contact" class="hover:text-pink-400">CONTACT</a>
         </div>
     </div>
+</nav>
 
-    <div id="modal-railway" class="modal-overlay justify-center items-center p-4" onclick="if(event.target === this) closeModal('railway')">
-        <div class="modal-content glass-card w-full max-w-4xl rounded-2xl p-0 overflow-hidden bg-[#1a0a14]">
-            <div class="relative h-64">
-                <img src="images/railway.png" class="w-full h-full object-cover">
-                <button onclick="closeModal('railway')" class="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full text-white text-2xl flex items-center justify-center hover:bg-pink-500 transition-colors">&times;</button>
-                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-[#1a0a14] to-transparent">
-                    <h2 class="text-3xl font-bold">Railway Management System</h2>
-                    <p class="text-pink-400 font-medium">Django & MySQL</p>
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center pt-24">
+    <div class="text-center max-w-2xl px-6">
+        <h1 class="text-5xl md:text-6xl font-bold font-[Syne] mb-6">
+            Hi, I'm <span class="gradient-text">Rajarshi</span>
+        </h1>
+        <p class="text-gray-400 text-lg mb-8">
+            Machine Learning & Full-Stack Developer building data-driven, scalable systems.
+        </p>
+        <a href="#projects" class="px-8 py-4 bg-pink-600 rounded-full font-bold hover:shadow-lg hover:shadow-pink-500/40">
+            View My Work
+        </a>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24">
+    <div class="container mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold font-[Syne] mb-4">Projects</h2>
+            <p class="text-pink-400 uppercase tracking-widest text-xs">Machine Learning Systems</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Bike Demand -->
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
+                 onclick="openModal('bike')">
+                <div class="h-52 bg-black flex items-center justify-center">
+                    <i class="fas fa-bicycle text-6xl text-pink-400"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Seoul Bike Demand Prediction</h3>
+                    <p class="text-gray-400 text-sm">
+                        End-to-end ML pipeline predicting bike rentals using regression & ensemble models.
+                    </p>
                 </div>
             </div>
-            <div class="p-8 space-y-6">
-                <p class="text-gray-300 leading-relaxed">
-                    A comprehensive Django-based railway scheduling and traffic management system that simulates real-world operational constraints. Features priority-based scheduling, conflict detection, and what-if scenario analysis.
-                </p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-pink-400">Key Features</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li>• Advanced priority-based scheduling</li>
-                            <li>• Simulated conflict detection</li>
-                            <li>• Manual override & AI-assisted modes</li>
-                            <li>• Comprehensive analytics dashboard</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-pink-400">Tech Stack</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Django</span><span class="skill-tag">MySQL</span><span class="skill-tag">Python</span><span class="skill-tag">Bootstrap</span>
-                        </div>
-                    </div>
+
+            <!-- Housing -->
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
+                 onclick="openModal('housing')">
+                <div class="h-52 bg-black flex items-center justify-center">
+                    <i class="fas fa-home text-6xl text-pink-400"></i>
                 </div>
-                <div class="pt-6 border-t border-pink-500/20 flex gap-4">
-                    <a href="https://sih-railways.vercel.app/" target="_blank" class="px-6 py-3 bg-pink-600 rounded-lg font-bold hover:bg-pink-700 transition-colors">Live Demo</a>
-                    <a href="https://github.com/Rajarshisaha10" target="_blank" class="px-6 py-3 border border-pink-600 rounded-lg font-bold hover:bg-pink-600/20 transition-colors">GitHub</a>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Housing Price Prediction</h3>
+                    <p class="text-gray-400 text-sm">
+                        Regression-based house price estimation with feature scaling & evaluation.
+                    </p>
                 </div>
             </div>
+
+            <!-- Ridge -->
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
+                 onclick="openModal('ridge')">
+                <div class="h-52 bg-black flex items-center justify-center">
+                    <i class="fas fa-chart-line text-6xl text-pink-400"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Ridge Regression Model</h3>
+                    <p class="text-gray-400 text-sm">
+                        Regularized linear regression to reduce overfitting and multicollinearity.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
+</section>
 
-    <div id="modal-recipe" class="modal-overlay justify-center items-center p-4" onclick="if(event.target === this) closeModal('recipe')">
-        <div class="modal-content glass-card w-full max-w-4xl rounded-2xl p-0 overflow-hidden bg-[#1a0a14]">
-            <div class="relative h-64">
-                <img src="images/recipe.png" class="w-full h-full object-cover">
-                <button onclick="closeModal('recipe')" class="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full text-white text-2xl flex items-center justify-center hover:bg-pink-500 transition-colors">&times;</button>
-                <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-[#1a0a14] to-transparent">
-                    <h2 class="text-3xl font-bold">AI Recipe Maker</h2>
-                    <p class="text-pink-400 font-medium">Recommendation Engine</p>
-                </div>
-            </div>
-            <div class="p-8 space-y-6">
-                <p class="text-gray-300 leading-relaxed">
-                    An intelligent recipe recommendation web application that leverages Natural Language Processing and similarity matching algorithms to suggest personalized recipes based on available ingredients.
-                </p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-pink-400">Key Features</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li>• Smart ingredient-based matching</li>
-                            <li>• NLP-driven text similarity (TF-IDF)</li>
-                            <li>• Dietary filters (vegan, gluten-free)</li>
-                            <li>• Nutritional information tracking</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-pink-400">Tech Stack</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Flask</span><span class="skill-tag">Pandas</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">NLP</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-6 border-t border-pink-500/20 flex gap-4">
-                    <a href="https://github.com/Rajarshisaha10" target="_blank" class="px-6 py-3 bg-pink-600 rounded-lg font-bold hover:bg-pink-700 transition-colors">View Code</a>
-                </div>
-            </div>
+<!-- SKILLS -->
+<section id="skills" class="py-24 bg-pink-900/5">
+    <div class="container mx-auto px-8 text-center">
+        <h2 class="text-5xl font-bold font-[Syne] mb-12">Skills</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Data Analysis</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Tailwind CSS</span>
         </div>
     </div>
+</section>
 
-    <script>
-        // Modal Logic
-        function openModal(id) {
-            const modal = document.getElementById('modal-' + id);
-            if (modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        function closeModal(id) {
-            const modal = document.getElementById('modal-' + id);
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            }
-        });
+<!-- CONTACT -->
+<section id="contact" class="py-24 text-center">
+    <h2 class="text-5xl font-bold font-[Syne] mb-8">Let's Connect</h2>
+    <p class="text-gray-400 mb-6">rajarshisaha123.4@gmail.com</p>
+</section>
 
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        function toggleMenu() {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        }
-        mobileMenuBtn.addEventListener('click', toggleMenu);
-        closeMenuBtn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+<!-- MODALS -->
+<div id="modal-bike" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'bike')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl">
+        <h2 class="text-3xl font-bold mb-4">Seoul Bike Demand Prediction</h2>
+        <p class="text-gray-300 mb-6">
+            Built a complete ML pipeline using preprocessing, feature engineering, and multiple models.
+            Compared Linear Regression with Random Forest using RMSE and R² metrics.
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Pipeline</span>
+            <span class="skill-tag">ColumnTransformer</span>
+            <span class="skill-tag">Random Forest</span>
+            <span class="skill-tag">RMSE</span>
+            <span class="skill-tag">R²</span>
+        </div>
+    </div>
+</div>
 
-        // Scroll Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
+<div id="modal-housing" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'housing')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl">
+        <h2 class="text-3xl font-bold mb-4">Housing Price Prediction</h2>
+        <p class="text-gray-300">
+            Regression-based ML model focusing on preprocessing, scaling, and performance evaluation
+            using real-world housing data.
+        </p>
+    </div>
+</div>
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        
-        // Specific observer for the About Image rotate effect
-        document.querySelectorAll('.reveal-rotate').forEach(el => observer.observe(el));
-    </script>
+<div id="modal-ridge" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'ridge')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl">
+        <h2 class="text-3xl font-bold mb-4">Ridge Regression</h2>
+        <p class="text-gray-300">
+            Implemented L2 regularization to reduce overfitting and improve generalization
+            compared to standard linear regression.
+        </p>
+    </div>
+</div>
+
+<script>
+function openModal(id){
+    document.getElementById('modal-'+id).classList.add('active');
+}
+function closeIfOutside(e,id){
+    if(e.target.id === 'modal-'+id){
+        document.getElementById('modal-'+id).classList.remove('active');
+    }
+}
+</script>
+
 </body>
 </html>
