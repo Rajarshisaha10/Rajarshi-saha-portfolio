@@ -11,88 +11,120 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            background: #0f050a;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
+        body { background: #0f050a; font-family: 'Space Grotesk', sans-serif; }
         .gradient-text {
             background: linear-gradient(90deg, #ec4899, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(236, 72, 153, 0.2);
+            border: 1px solid rgba(236,72,153,0.15);
+            transition: all 0.3s ease;
         }
-
+        .glass-card:hover {
+            border-color: rgba(236,72,153,0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(236,72,153,0.2);
+        }
         .skill-tag {
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 999px;
-            background: rgba(236, 72, 153, 0.15);
+            background: rgba(236,72,153,0.15);
             font-size: 12px;
             font-weight: 600;
         }
-
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0,0,0,0.9);
             display: none;
             z-index: 50;
+            backdrop-filter: blur(10px);
         }
-
-        .modal-overlay.active {
-            display: flex;
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #ec4899;
         }
     </style>
 </head>
 
 <body class="text-white">
 
-<!-- NAVBAR -->
-<nav class="fixed w-full top-0 z-50 py-4 bg-[#0f050a]/80 backdrop-blur-md border-b border-pink-500/10">
-    <div class="container mx-auto px-6 md:px-8 flex justify-between items-center">
-        <div class="text-2xl font-bold font-[Syne] cursor-pointer">
+<!-- NAV -->
+<nav class="fixed w-full top-0 z-40 bg-[#0f050a]/80 backdrop-blur-md border-b border-pink-500/10 py-4">
+    <div class="container mx-auto px-8 flex justify-between items-center">
+        <div class="text-2xl font-bold font-[Syne]">
             <span class="gradient-text">R</span>AJARSHI
         </div>
-        <div class="hidden md:flex gap-8">
-            <a href="#home" class="hover:text-pink-400">HOME</a>
-            <a href="#about" class="hover:text-pink-400">ABOUT</a>
-            <a href="#projects" class="hover:text-pink-400">PROJECTS</a>
-            <a href="#skills" class="hover:text-pink-400">SKILLS</a>
-            <a href="#contact" class="hover:text-pink-400">CONTACT</a>
+        <div class="hidden md:flex gap-8 text-sm font-semibold">
+            <a href="#about" class="nav-link">ABOUT</a>
+            <a href="#projects" class="nav-link">PROJECTS</a>
+            <a href="#skills" class="nav-link">SKILLS</a>
+            <a href="#contact" class="nav-link">CONTACT</a>
         </div>
     </div>
 </nav>
 
 <!-- HERO -->
-<section id="home" class="min-h-screen flex items-center justify-center pt-24">
+<section class="min-h-screen flex items-center justify-center pt-24">
     <div class="text-center max-w-2xl px-6">
-        <h1 class="text-5xl md:text-6xl font-bold font-[Syne] mb-6">
+        <h1 class="text-5xl md:text-7xl font-bold font-[Syne] mb-6">
             Hi, I'm <span class="gradient-text">Rajarshi</span>
         </h1>
         <p class="text-gray-400 text-lg mb-8">
-            Machine Learning & Full-Stack Developer building data-driven systems.
+            Machine Learning & Full-Stack Developer building data-driven, scalable systems.
         </p>
-        <a href="#projects"
-           class="px-8 py-4 bg-pink-600 rounded-full font-bold hover:shadow-lg hover:shadow-pink-500/40">
-            View My Work
-        </a>
+        <div class="flex gap-4 justify-center">
+            <a href="#projects" class="px-8 py-4 bg-pink-600 rounded-full font-bold hover:shadow-lg hover:shadow-pink-500/40 transition">
+                View My Work
+            </a>
+            <a href="#contact" class="px-8 py-4 border-2 border-pink-600 rounded-full font-bold hover:bg-pink-600/10 transition">
+                Contact Me
+            </a>
+        </div>
+        <div class="mt-8 flex justify-center">
+            <img src="logo.png" alt="Rajarshi Saha" class="h-32 w-32 rounded-full object-cover border-4 border-pink-500/30 hover:border-pink-500/60 transition shadow-lg shadow-pink-500/20">
+        </div>
     </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="py-24">
-    <div class="container mx-auto px-8 max-w-4xl text-center">
-        <h2 class="text-5xl font-bold font-[Syne] mb-6">About Me</h2>
-        <p class="text-gray-400 text-lg leading-relaxed">
-            I am a Computer Science fresher with strong interest in Machine Learning and
-            Full-Stack Development. I enjoy building scalable ML pipelines, performing
-            data analysis, and integrating models into real-world systems.
-        </p>
+<section id="about" class="py-24 bg-pink-900/5">
+    <div class="container mx-auto px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-bold font-[Syne] mb-4">About Me</h2>
+            <p class="text-pink-400 uppercase tracking-widest text-xs">Get to know me</p>
+        </div>
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-card p-8 rounded-2xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            I am a Computer Science fresher with a strong interest in Machine Learning and Full-Stack Development. I enjoy building scalable, responsive, and user-focused applications using clean code, thoughtful UI/UX, and modern development practices.
+                        </p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            I have hands-on experience with HTML, CSS, JavaScript, Tailwind CSS, Python, Django, and Scikit-learn, and I actively work with APIs, databases, and end-to-end application workflows. I am particularly interested in integrating machine learning models into full-stack applications to solve real-world problems.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            Alongside engineering, I have a strong passion for cinematic visuals, storytelling, and motion-driven design. This creative mindset helps me build visually engaging interfaces, smooth animations, and interactive user experiences that go beyond basic functionality.
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="background.png" alt="Rajarshi Saha" class="rounded-2xl w-full max-w-sm object-cover border-2 border-pink-500/20 hover:border-pink-500/40 transition">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -100,52 +132,75 @@
 <section id="projects" class="py-24">
     <div class="container mx-auto px-8">
         <div class="text-center mb-16">
-            <h2 class="text-5xl font-bold font-[Syne] mb-4">Projects</h2>
-            <p class="text-pink-400 uppercase tracking-widest text-xs">
-                Machine Learning Implementations
-            </p>
+            <h2 class="text-5xl font-bold font-[Syne] mb-4">Featured Work</h2>
+            <p class="text-pink-400 uppercase tracking-widest text-xs">Click to view details</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Seoul Bike -->
-            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
-                 onclick="openModal('bike')">
-                <div class="h-52 flex items-center justify-center bg-black">
+            <!-- AI Therapist -->
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="openModal('therapist')">
+                <div class="h-52 bg-gradient-to-br from-pink-900/40 to-purple-900/40 flex items-center justify-center">
+                    <i class="fas fa-brain text-6xl text-pink-400"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">AI Therapist</h3>
+                    <p class="text-gray-400 text-sm">
+                        AI-powered mental health support chatbot with sentiment analysis.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Railway System -->
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="openModal('railway')">
+                <div class="h-52 bg-gradient-to-br from-pink-900/40 to-purple-900/40 flex items-center justify-center">
+                    <i class="fas fa-train text-6xl text-pink-400"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Railway Management System</h3>
+                    <p class="text-gray-400 text-sm">
+                        Django-based railway scheduling and traffic management system.
+                    </p>
+                </div>
+            </div>
+
+
+
+            <!-- Bike Demand -->
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="openModal('bike')">
+                <div class="h-52 bg-gradient-to-br from-pink-900/40 to-purple-900/40 flex items-center justify-center">
                     <i class="fas fa-bicycle text-6xl text-pink-400"></i>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">Seoul Bike Demand Prediction</h3>
                     <p class="text-gray-400 text-sm">
-                        End-to-end ML pipeline using Linear Regression & Random Forest.
+                        End-to-end ML pipeline predicting bike rentals using regression models.
                     </p>
                 </div>
             </div>
 
             <!-- Housing -->
-            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
-                 onclick="openModal('housing')">
-                <div class="h-52 flex items-center justify-center bg-black">
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="openModal('housing')">
+                <div class="h-52 bg-gradient-to-br from-pink-900/40 to-purple-900/40 flex items-center justify-center">
                     <i class="fas fa-home text-6xl text-pink-400"></i>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">Housing Price Prediction</h3>
                     <p class="text-gray-400 text-sm">
-                        Regression-based house price estimation with evaluation metrics.
+                        Regression-based house price estimation with feature scaling.
                     </p>
                 </div>
             </div>
 
             <!-- Ridge -->
-            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer"
-                 onclick="openModal('ridge')">
-                <div class="h-52 flex items-center justify-center bg-black">
+            <div class="glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="openModal('ridge')">
+                <div class="h-52 bg-gradient-to-br from-pink-900/40 to-purple-900/40 flex items-center justify-center">
                     <i class="fas fa-chart-line text-6xl text-pink-400"></i>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">Ridge Regression Model</h3>
                     <p class="text-gray-400 text-sm">
-                        L2-regularized linear regression to reduce overfitting.
+                        Regularized linear regression to reduce overfitting.
                     </p>
                 </div>
             </div>
@@ -156,43 +211,181 @@
 
 <!-- SKILLS -->
 <section id="skills" class="py-24 bg-pink-900/5">
-    <div class="container mx-auto px-8 text-center">
-        <h2 class="text-5xl font-bold font-[Syne] mb-12">Skills</h2>
-        <div class="flex flex-wrap justify-center gap-3">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">NumPy</span>
-            <span class="skill-tag">Scikit-learn</span>
-            <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">Random Forest</span>
-            <span class="skill-tag">Data Analysis</span>
-            <span class="skill-tag">Django</span>
+    <div class="container mx-auto px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-bold font-[Syne] mb-4">Skills & Tech</h2>
+        </div>
+
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Frontend -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 gradient-text">Frontend</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Tailwind</span>
+                    <span class="skill-tag">Three.js</span>
+                </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 gradient-text">Backend</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">C/C++</span>
+                </div>
+            </div>
+
+            <!-- AI & ML -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 gradient-text">AI & ML</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">NLTK</span>
+                    <span class="skill-tag">spaCy</span>
+                    <span class="skill-tag">NLP</span>
+                </div>
+            </div>
+
+            <!-- Database -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 gradient-text">Database</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">SQLite</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
+
+            <!-- Data Analysis -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 gradient-text">Data Analysis</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Data Analysis</span>
+                </div>
+            </div>
+
+            <!-- Creative -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4 gradient-text">Creative</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Premiere Pro</span>
+                    <span class="skill-tag">After Effects</span>
+                    <span class="skill-tag">DaVinci</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-24 text-center">
-    <h2 class="text-5xl font-bold font-[Syne] mb-8">Contact</h2>
-    <p class="text-gray-400">📧 rajarshisaha123.4@gmail.com</p>
+<section id="contact" class="py-24">
+    <div class="container mx-auto px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-bold font-[Syne] mb-4">Let's Connect</h2>
+        </div>
+
+        <div class="max-w-2xl mx-auto grid md:grid-cols-3 gap-6">
+            <a href="https://www.instagram.com/rajarshi_saha_10" target="_blank" class="glass-card p-6 rounded-2xl text-center hover:border-pink-400 transition">
+                <i class="fab fa-instagram text-3xl text-pink-400 mb-3"></i>
+                <h3 class="font-bold mb-1">Instagram</h3>
+                <p class="text-gray-400 text-sm">@rajarshi_saha_10</p>
+            </a>
+
+            <div class="glass-card p-6 rounded-2xl text-center">
+                <i class="fas fa-envelope text-3xl text-pink-400 mb-3"></i>
+                <h3 class="font-bold mb-1">Email</h3>
+                <p class="text-gray-400 text-sm break-all">rajarshisaha123.4@gmail.com</p>
+            </div>
+
+            <a href="https://www.linkedin.com/in/rajarshi-saha" target="_blank" class="glass-card p-6 rounded-2xl text-center hover:border-pink-400 transition">
+                <i class="fab fa-linkedin text-3xl text-pink-400 mb-3"></i>
+                <h3 class="font-bold mb-1">LinkedIn</h3>
+                <p class="text-gray-400 text-sm">Connect professionally</p>
+            </a>
+        </div>
+    </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="py-6 border-t border-pink-500/10 text-center text-gray-500 text-sm">
-    © 2025 Rajarshi Saha
+<footer class="py-8 text-center text-gray-500 border-t border-pink-500/10">
+    <p>© 2025 Rajarshi Saha. All rights reserved.</p>
 </footer>
 
 <!-- MODALS -->
-<div id="modal-bike" class="modal-overlay items-center justify-center p-6" onclick="closeOutside(event,'bike')">
-    <div class="glass-card max-w-3xl p-8 rounded-2xl">
-        <h2 class="text-3xl font-bold mb-4">Seoul Bike Demand Prediction</h2>
-        <p class="text-gray-300 mb-4">
-            Built a complete preprocessing and modeling pipeline using ColumnTransformer,
-            Linear Regression and Random Forest Regressor. Evaluated performance using
-            RMSE and R² score.
+
+<!-- AI Therapist Modal -->
+<div id="modal-therapist" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'therapist')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl modal-content">
+        <h2 class="text-3xl font-bold mb-2">AI Therapist</h2>
+        <p class="text-pink-400 text-sm mb-6">NLP & Sentiment Analysis</p>
+        <p class="text-gray-300 mb-6">
+            An advanced AI-powered mental health support chatbot that provides empathetic, context-aware conversations using state-of-the-art Natural Language Processing techniques. The system is designed with user safety and ethical AI usage at its core.
         </p>
+        <h3 class="font-bold mb-3">Key Features</h3>
+        <ul class="text-gray-300 mb-6 space-y-2">
+            <li>• Context-aware conversational flow</li>
+            <li>• Real-time sentiment analysis</li>
+            <li>• Built-in safety mechanisms</li>
+            <li>• Privacy-focused architecture</li>
+        </ul>
+        <h3 class="font-bold mb-3">Tech Stack</h3>
+        <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Scikit-learn</span>
+        </div>
+    </div>
+</div>
+
+<!-- Railway Modal -->
+<div id="modal-railway" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'railway')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl modal-content">
+        <h2 class="text-3xl font-bold mb-2">Railway Management System</h2>
+        <p class="text-pink-400 text-sm mb-6">Django & MySQL</p>
+        <p class="text-gray-300 mb-6">
+            A comprehensive Django-based railway scheduling and traffic management system that simulates real-world operational constraints. Features priority-based scheduling, conflict detection, and what-if scenario analysis.
+        </p>
+        <h3 class="font-bold mb-3">Key Features</h3>
+        <ul class="text-gray-300 mb-6 space-y-2">
+            <li>• Advanced priority-based scheduling</li>
+            <li>• Simulated conflict detection</li>
+            <li>• Manual override & AI-assisted modes</li>
+            <li>• Comprehensive analytics dashboard</li>
+        </ul>
+        <h3 class="font-bold mb-3">Tech Stack</h3>
+        <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Bootstrap</span>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Bike Demand Modal -->
+<div id="modal-bike" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'bike')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl modal-content">
+        <h2 class="text-3xl font-bold mb-4">Seoul Bike Demand Prediction</h2>
+        <p class="text-gray-300 mb-6">
+            Built a complete ML pipeline using preprocessing, feature engineering, and multiple models.
+            Compared Linear Regression with Random Forest using RMSE and R² metrics.
+        </p>
+        <h3 class="font-bold mb-3">Tech Stack</h3>
         <div class="flex flex-wrap gap-2">
             <span class="skill-tag">Pipeline</span>
+            <span class="skill-tag">ColumnTransformer</span>
             <span class="skill-tag">Random Forest</span>
             <span class="skill-tag">RMSE</span>
             <span class="skill-tag">R²</span>
@@ -200,33 +393,47 @@
     </div>
 </div>
 
-<div id="modal-housing" class="modal-overlay items-center justify-center p-6" onclick="closeOutside(event,'housing')">
-    <div class="glass-card max-w-3xl p-8 rounded-2xl">
+<!-- Housing Modal -->
+<div id="modal-housing" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'housing')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl modal-content">
         <h2 class="text-3xl font-bold mb-4">Housing Price Prediction</h2>
-        <p class="text-gray-300">
-            Regression model trained on housing data with feature scaling,
-            preprocessing, and performance evaluation using standard metrics.
+        <p class="text-gray-300 mb-6">
+            Regression-based ML model focusing on preprocessing, scaling, and performance evaluation
+            using real-world housing data.
         </p>
+        <h3 class="font-bold mb-3">Tech Stack</h3>
+        <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Pandas</span>
+        </div>
     </div>
 </div>
 
-<div id="modal-ridge" class="modal-overlay items-center justify-center p-6" onclick="closeOutside(event,'ridge')">
-    <div class="glass-card max-w-3xl p-8 rounded-2xl">
+<!-- Ridge Modal -->
+<div id="modal-ridge" class="modal-overlay items-center justify-center p-6" onclick="closeIfOutside(event,'ridge')">
+    <div class="glass-card max-w-3xl p-8 rounded-2xl modal-content">
         <h2 class="text-3xl font-bold mb-4">Ridge Regression</h2>
-        <p class="text-gray-300">
-            Implemented L2 regularization to reduce multicollinearity and overfitting,
-            improving model generalization compared to standard linear regression.
+        <p class="text-gray-300 mb-6">
+            Implemented L2 regularization to reduce overfitting and improve generalization
+            compared to standard linear regression.
         </p>
+        <h3 class="font-bold mb-3">Tech Stack</h3>
+        <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">NumPy</span>
+        </div>
     </div>
 </div>
 
 <script>
-function openModal(id) {
-    document.getElementById('modal-' + id).classList.add('active');
+function openModal(id){
+    document.getElementById('modal-'+id).classList.add('active');
 }
-function closeOutside(e, id) {
-    if (e.target.id === 'modal-' + id) {
-        document.getElementById('modal-' + id).classList.remove('active');
+function closeIfOutside(e,id){
+    if(e.target.id === 'modal-'+id){
+        document.getElementById('modal-'+id).classList.remove('active');
     }
 }
 </script>
